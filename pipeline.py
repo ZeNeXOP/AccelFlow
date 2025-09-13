@@ -22,6 +22,14 @@ def run_full_pipeline(onnx_model_path: str, constraints: dict) -> list:
     # Modules 2 & 3: Run search (which calls predictor internally)
     top_configs = run_simple_search(model_json, constraints)
     
+    # Module 4: Generate Verilog code
+    if top_configs:
+        from core_rtl import generate_rtl
+        rtl_code = generate_rtl(top_configs[0])
+        with open('generated_rtl.v', 'w') as f:
+            f.write(rtl_code)
+        print("Generated RTL saved to generated_rtl.v")
+    
     return top_configs
 
 # Example usage (for quick testing)

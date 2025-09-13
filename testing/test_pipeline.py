@@ -116,3 +116,27 @@ def test_pipeline_invalid_constraints(temp_onnx_file):
     tight_constraints = {'max_latency_ms': 0.0001, 'max_power_w': 0.0001}
     top_configs = run_full_pipeline(temp_onnx_file, tight_constraints)
     assert len(top_configs) == 0
+    
+# ... at the end of the file ...
+def test_rtl_generation_simple():
+    # Test RTL generation for a simple config
+    from core_rtl import generate_rtl  # Assume this function
+    mock_config = {'array_size': 4, 'precision': 'INT8', 'clock_ghz': 1.0}
+    rtl_code = generate_rtl(mock_config)
+    assert isinstance(rtl_code, str)
+    assert len(rtl_code) > 0
+    assert "module systolic_array" in rtl_code  # Check for expected content
+    assert f"parameter ARRAY_SIZE = {mock_config['array_size']}" in rtl_code  # Param check
+    assert f"parameter DATA_WIDTH = 8" in rtl_code
+
+def test_pipeline_with_rtl(temp_onnx_file):
+    # Test full pipeline including RTL generation
+    constraints = {'max_latency_ms': 1.0, 'max_power_w': 1.0}
+    top_configs = run_full_pipeline(temp_onnx_file, constraints)
+    
+    assert isinstance(top_configs, list)
+    if top_configs:
+        from core_rtl import generate_rtl
+        rtl_code = generate_rtl(top_configs[0])
+        assert "module" in rtl_code  # Basic sanity
+        # Optionally, check if file was written (but avoid side effects in tests)
