@@ -1,1 +1,60 @@
+# Virtual environments
 /envi
+venv/
+env/
+.env
+
+# ONNX model files (can be large)
+*.onnx
+models_onnx/
+
+
+# Generated RTL files
+generated_rtl.v
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Model training artifacts
+trained_models/
+*.pkl
+*.joblib
+
+# Data files (if large)
+*.csv
+*.json
+*.h5
+*.hdf5
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*

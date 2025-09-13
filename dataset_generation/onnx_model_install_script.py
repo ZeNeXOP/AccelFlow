@@ -144,7 +144,7 @@ Examples:
                         help='Path to text file containing ONNX model URLs')
     parser.add_argument('-o', '--output', required=True,
                         help='Output directory to save downloaded models')
-    parser.add_argument('--timeout', type=int, default=300,
+    parser.add_argument('--timeout', type=int, default=100000,
                         help='Download timeout in seconds (default: 300)')
     parser.add_argument('--skip-existing', action='store_true',
                         help='Skip downloading if file already exists')

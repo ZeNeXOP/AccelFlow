@@ -1,0 +1,32 @@
+RTX 3050 6GB
+python
+hardware_config = {
+    'array_size': 36, 
+    'precision_val': 32,  # FP32 precision
+    'batch_size': 1,
+    'clock_ghz': 1.47,  # Boost clock in GHz
+}
+RTX 3050 4GB
+python
+hardware_config = {
+    'array_size': 32,  # CUDA cores / 64 = 2048 / 64
+    'precision_val': 32,  # FP32 precision
+    'batch_size': 1,
+    'clock_ghz': 1.74,  # Boost clock in GHz
+}
+RTX 4060 8GB
+python
+hardware_config = {
+    'array_size': 48,  # CUDA cores / 64 = 3072 / 64
+    'precision_val': 32,  # FP32 precision
+    'batch_size': 1,
+    'clock_ghz': 2.46,  # Boost clock in GHz
+}
+RTX 2050 4GB
+python
+hardware_config = {
+    'array_size': 32,  # CUDA cores / 64 = 2048 / 64
+    'precision_val': 32,  # FP32 precision
+    'batch_size': 1,
+    'clock_ghz': 1.48,  # Boost clock in GHz
+}
