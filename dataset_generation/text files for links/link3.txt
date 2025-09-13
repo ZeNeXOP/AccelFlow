@@ -1,0 +1,5 @@
+https://github.com/onnx/models/raw/bec48b6a70e5e9042c0badbaafefe4454e072d08/validated/vision/object_detection_segmentation/tiny-yolov2/model/tinyyolov2-8.onnx
+https://github.com/onnx/models/raw/bec48b6a70e5e9042c0badbaafefe4454e072d08/validated/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_10.onnx
+https://github.com/onnx/models/raw/bec48b6a70e5e9042c0badbaafefe4454e072d08/validated/vision/object_detection_segmentation/faster-rcnn/model/FasterRCNN-10.onnx
+https://github.com/onnx/models/raw/bec48b6a70e5e9042c0badbaafefe4454e072d08/validated/vision/object_detection_segmentation/fcn/model/fcn-resnet101-11.onnx
+https://github.com/onnx/models/raw/bec48b6a70e5e9042c0badbaafefe4454e072d08/validated/text/machine_comprehension/roberta/model/roberta-base-11.onnx

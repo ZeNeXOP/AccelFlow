@@ -7,3 +7,5 @@ numpy
 pandas
 plotly
 pytest
+requests
+pathlib
