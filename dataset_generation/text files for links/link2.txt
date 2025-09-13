@@ -1,0 +1,5 @@
+https://github.com/onnx/models/raw/bec48b6a70e5e9042c0badbaafefe4454e072d08/validated/vision/classification/inception_and_googlenet/inception_v1/model/inception-v1-9.onnx
+https://github.com/onnx/models/raw/bec48b6a70e5e9042c0badbaafefe4454e072d08/validated/vision/classification/shufflenet/model/shufflenet-v2-10.onnx
+https://github.com/onnx/models/raw/bec48b6a70e5e9042c0badbaafefe4454e072d08/validated/vision/classification/vgg/model/vgg16-7.onnx
+https://github.com/onnx/models/raw/bec48b6a70e5e9042c0badbaafefe4454e072d08/validated/vision/classification/mnist/model/mnist-8.onnx
+https://github.com/onnx/models/raw/bec48b6a70e5e9042c0badbaafefe4454e072d08/validated/vision/object_detection_segmentation/yolov4/model/yolov4.onnx
