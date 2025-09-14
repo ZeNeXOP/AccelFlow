@@ -63,4 +63,3 @@ htmlcov/
 .coverage
 .coverage.*
 
-benchmark_realdatagen.py
