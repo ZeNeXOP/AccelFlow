@@ -87,11 +87,19 @@ def generate_real_data(model_dir: str, output_file: str, runs_per_model: int = 5
     
     # Define hardware config for these benchmarks
     hardware_config = {
+<<<<<<< Updated upstream
         'array_size': 32,  # Example: CUDA cores / 64
         'precision_val': 32,  # FP32 precision
         'batch_size': 1,
         'clock_ghz': 1.48,  # GPU boost clock in GHz
     }
+=======
+    'array_size': 36, 
+    'precision_val': 32,  # FP32 precision
+    'batch_size': 1,
+    'clock_ghz': 1.47,  # Boost clock in GHz
+}
+>>>>>>> Stashed changes
 
     # Get all ONNX models in the directory
     model_files = [f for f in os.listdir(model_dir) if f.endswith('.onnx')]
@@ -101,7 +109,11 @@ def generate_real_data(model_dir: str, output_file: str, runs_per_model: int = 5
         print(f"No ONNX models found in {model_dir}")
         return
     
+<<<<<<< Updated upstream
     print(f"Found {total_models} ONNX models. Will run {runs_per_model} benchmarks per model.")
+=======
+    print(f"Found {total_models} ONNX models. Will run {runs_per_model} benchmarks")
+>>>>>>> Stashed changes
     print(f"Total benchmarks to run: {total_models * runs_per_model}")
     print("=" * 60)
 
