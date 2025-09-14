@@ -7,6 +7,7 @@ env/
 # ONNX model files (can be large)
 *.onnx
 models_onnx/
+test files for links/
 
 
 # Generated RTL files
@@ -51,6 +52,9 @@ trained_models/
 *.h5
 *.hdf5
 
+# Allow dataset CSV files specifically
+!dataset_generation/data/*.csv
+
 # Pytest cache
 .pytest_cache/
 
@@ -58,3 +62,5 @@ trained_models/
 htmlcov/
 .coverage
 .coverage.*
+
+benchmark_realdatagen.py
