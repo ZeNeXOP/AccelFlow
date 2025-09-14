@@ -20,7 +20,8 @@ def run_full_pipeline(onnx_model_path: str, constraints: dict) -> list:
     model_json = parse_onnx(onnx_model_path)
     
     # Modules 2 & 3: Run search (which calls predictor internally)
-    top_configs = run_simple_search(model_json, constraints)
+    from core_search import run_hybrid_search
+    top_configs = run_hybrid_search(model_json, constraints)
     
     # Module 4: Generate Verilog code
     if top_configs:
@@ -35,5 +36,5 @@ def run_full_pipeline(onnx_model_path: str, constraints: dict) -> list:
 # Example usage (for quick testing)
 if __name__ == '__main__':
     example_path = 'models_onnx/mobilenetv2-7.onnx'  # Adjust to your real file
-    example_constraints = {'max_latency_ms': 50, 'max_power_w': 5}
+    example_constraints = {'max_latency_ms': 500, 'max_power_w': 50, max_memory_mb: 1024}
     print(run_full_pipeline(example_path, example_constraints))

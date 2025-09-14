@@ -1,6 +1,9 @@
 import os
 from pathlib import Path
 
+# Get the absolute path to the project root
+PROJECT_ROOT = Path(__file__).parent
+
 # Define the path to the templates directory, making it robust
 TEMPLATE_DIR = Path(__file__).parent / 'rtl_templates'
 TEMPLATE_FILE = 'systolic_array_template.v'
@@ -42,37 +45,34 @@ def generate_verilog(config: dict, model_name: str) -> str:
     return generated_code
 
 
-def generate_rtl(config: dict) -> str:
-    """
-    Generates Verilog RTL code by loading the systolic array template and replacing placeholders.
-
-    Args:
-        config (dict): Hardware config, e.g., {'array_size': 4, 'precision': 'INT8'}.
-
-    Returns:
-        str: Generated Verilog code.
-    """
-    # Map precision to bitwidth
-    precision_to_bitwidth = {'INT8': 8, 'FP16': 16, 'FP32': 32}
-    bitwidth = precision_to_bitwidth.get(config.get('precision', 'INT8'), 8)
+def generate_rtl(hardware_config: dict) -> str:
+    """Generate RTL code for the systolic array based on hardware configuration."""
+    # Load template
+    template_path = PROJECT_ROOT / "rtl_templates" / "systolic_array_template.v"
     
-    # Load the systolic array template
-    template_path = os.path.join('rtl_templates', 'systolic_array_template.v')
-    if not os.path.exists(template_path):
+    if not template_path.exists():
         raise FileNotFoundError(f"Systolic array template not found: {template_path}")
     
     with open(template_path, 'r') as f:
         template = f.read()
     
-    # Replace placeholders (using __PLACEHOLDER__ style from your output)
-    rtl_code = template.replace('__ARRAY_SIZE__', str(config.get('array_size', 4)))
-    rtl_code = rtl_code.replace('__DATA_WIDTH__', str(bitwidth))
-    rtl_code = rtl_code.replace('__ACCUM_WIDTH__', str(bitwidth * 4))
-    rtl_code = rtl_code.replace('__MODEL_NAME__', config.get('model_name', 'GeneratedModel'))
+    # Extract configuration parameters
+    array_size = hardware_config.get('array_size', 8)
+    precision = hardware_config.get('precision', 'INT8')
+    clock_ghz = hardware_config.get('clock_ghz', 1.0)
     
-    # Prepend includes for modularity
-    includes = '`include "mac_unit_template.v"\n'
-    rtl_code = includes + rtl_code
+    # Determine data width based on precision
+    if precision == 'INT8':
+        data_width = 8
+    elif precision == 'FP16':
+        data_width = 16
+    else:  # FP32
+        data_width = 32
+    
+    # Replace placeholders
+    rtl_code = template.replace('{{ARRAY_SIZE}}', str(array_size))
+    rtl_code = rtl_code.replace('{{DATA_WIDTH}}', str(data_width))
+    rtl_code = rtl_code.replace('{{CLOCK_FREQUENCY}}', f"{clock_ghz:.1f}")
     
     return rtl_code
 
