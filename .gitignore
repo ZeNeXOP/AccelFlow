@@ -62,3 +62,5 @@ trained_models/
 htmlcov/
 .coverage
 .coverage.*
+
+benchmark_realdatagen.py
