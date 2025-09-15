@@ -2,7 +2,7 @@
 // Systolic Array Template for AI Accelerator
 module systolic_array #(
     parameter DATA_WIDTH = 8,
-    parameter ARRAY_SIZE = 16,
+    parameter ARRAY_SIZE = 32,
     parameter ACCUM_WIDTH = 32
 ) (
     input clk,
