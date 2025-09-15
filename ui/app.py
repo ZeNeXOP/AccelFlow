@@ -109,7 +109,7 @@ with st.sidebar:
     )
 
     st.session_state.max_latency_ms = st.slider(
-        "Max Latency (ms)", 10, 500,
+        "Max Latency (ms)", 10, 1000,
         value=100,  # More realistic default
         step=5, help="Set the maximum acceptable inference time for the model."
     )
@@ -122,7 +122,7 @@ with st.sidebar:
     )
     
     st.session_state.max_memory_mb = st.slider(
-        "Max Memory (MB)", 64, 2048,
+        "Max Memory (MB)", 64, 10240,
         value=512,  # Reasonable default
         step=64, help="Set the maximum acceptable memory usage."
     )

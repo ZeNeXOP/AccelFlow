@@ -1,0 +1,34 @@
+application: accelflow-predictor
+runtime: custom
+env: flex
+
+runtime_config:
+  python_version: 3.9
+
+manual_scaling:
+  instances: 1
+
+resources:
+  cpu: 4
+  memory_gb: 16
+  accelerator:
+    type: NVIDIA_TESLA_T4
+    count: 1
+
+env_variables:
+  MODEL_DIR: /models
+
+# Health check
+liveness_check:
+  path: "/health"
+  check_interval_sec: 30
+  timeout_sec: 4
+  failure_threshold: 2
+  initial_delay_sec: 300
+
+readiness_check:
+  path: "/health"  
+  check_interval_sec: 30
+  timeout_sec: 4
+  failure_threshold: 2
+  initial_delay_sec: 300
