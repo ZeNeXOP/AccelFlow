@@ -9,3 +9,5 @@ plotly
 pytest
 requests
 pathlib
+torch-model-archiver 
+torchserve
